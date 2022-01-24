@@ -1,11 +1,17 @@
 <h1>SimpleNPC<img src="assets/icon.png" height="64" width="64" align="left" alt=""></h1><br>
 
+## === WARNING ===
+<b>
+This is forked repo.
+<br>
+
+original -> https://github.com/brokiem/SimpleNPC
+
+</b><br>
+
 <b>An Ultimate NPC plugin made by brokiem for PocketMine-MP.</b><br>
 [![License](https://img.shields.io/github/license/brokiem/SimpleNPC)](https://github.com/brokiem/SimpleNPC)
-[![Star](https://img.shields.io/github/stars/brokiem/SimpleNPC)](https://github.com/brokiem/SimpleNPC/stargazers)
-[![Discord](https://img.shields.io/discord/830063409000087612?color=7389D8&label=discord)](https://discord.com/invite/jy6abSrjhQ)
-[![Support me on Patreon](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Fshieldsio-patreon.vercel.app%2Fapi%3Fusername%3Dbrokiem%26type%3Dpatrons&style=flat)](https://patreon.com/brokiem)
-[![Poggit](https://poggit.pmmp.io/shield.dl.total/SimpleNPC)](https://poggit.pmmp.io/p/SimpleNPC)
+<br>
 
 ## ✨ Features
 
