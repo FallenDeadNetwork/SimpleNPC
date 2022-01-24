@@ -21,6 +21,7 @@ use brokiem\snpc\entity\npc\EndermanNPC;
 use brokiem\snpc\entity\npc\GlowsquidNPC;
 use brokiem\snpc\entity\npc\GoatNPC;
 use brokiem\snpc\entity\npc\HorseNPC;
+use brokiem\snpc\entity\npc\LogoNPC;
 use brokiem\snpc\entity\npc\OcelotNPC;
 use brokiem\snpc\entity\npc\PigNPC;
 use brokiem\snpc\entity\npc\PolarBearNPC;
@@ -75,7 +76,8 @@ class NPCManager {
         VillagerNPC::class => ["villager_snpc", "simplenpc:villager"],
         WitchNPC::class => ["witch_snpc", "simplenpc:witch"],
         WolfNPC::class => ["wolf_snpc", "simplenpc:wolf"],
-        ZombieNPC::class => ["zombie_snpc", "simplenpc:zombie"]
+        ZombieNPC::class => ["zombie_snpc", "simplenpc:zombie"],
+        LogoNPC::class => ["logo_snpc", "simplenpc:logo"]
     ];
 
     public function getDefaultNPCs(): array {
