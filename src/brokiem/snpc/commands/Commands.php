@@ -128,6 +128,7 @@ class Commands extends Command implements PluginOwned {
                     break;
                 case "delete":
                 case "remove":
+                case "rm":
                     if (!$sender->hasPermission("simplenpc.remove")) {
                         $sender->sendMessage(TextFormat::RED . "You don't have permission");
                         return true;
@@ -201,7 +202,18 @@ class Commands extends Command implements PluginOwned {
                     break;
             }
         } else {
-            $sender->sendMessage("§7---- ---- [ §3SimpleNPC§7 ] ---- ----\n§bAuthor: @brokiem\n§3Source Code: github.com/brokiem/SimpleNPC\nVersion " . $this->getOwningPlugin()->getDescription()->getVersion() . "\n§7---- ---- ---- - ---- ---- ----");
+            //$sender->sendMessage("§7---- ---- [ §3SimpleNPC§7 ] ---- ----\n§bAuthor: @brokiem\n§3Source Code: github.com/brokiem/SimpleNPC\nVersion " . $this->getOwningPlugin()->getDescription()->getVersion() . "\n§7---- ---- ---- - ---- ---- ----");
+            if (!$sender->hasPermission("simplenpc.ui")) {
+                $sender->sendMessage(TextFormat::RED . "You don't have permission");
+                return true;
+            }
+
+            if (!$sender instanceof Player) {
+                $sender->sendMessage("Only player can run this command");
+                return true;
+            }
+
+            FormManager::getInstance()->sendUIForm($sender);
         }
 
         return true;
