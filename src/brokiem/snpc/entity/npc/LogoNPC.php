@@ -15,8 +15,8 @@ use pocketmine\entity\EntitySizeInfo;
 
 class LogoNPC extends BaseNPC {
 
-    public float $height = 1.6;
-    public float $width = 3.0;
+    public float $height = 0.0;
+    public float $width = 0.0;
 
     protected function getInitialSizeInfo(): EntitySizeInfo {
         return new EntitySizeInfo($this->height, $this->width);
