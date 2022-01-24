@@ -14,6 +14,7 @@ use brokiem\snpc\entity\CustomHuman;
 use brokiem\snpc\entity\npc\AxolotlNPC;
 use brokiem\snpc\entity\npc\BatNPC;
 use brokiem\snpc\entity\npc\BlazeNPC;
+use brokiem\snpc\entity\npc\BlockingDeadNPC;
 use brokiem\snpc\entity\npc\ChickenNPC;
 use brokiem\snpc\entity\npc\CowNPC;
 use brokiem\snpc\entity\npc\CreeperNPC;
@@ -77,7 +78,8 @@ class NPCManager {
         WitchNPC::class => ["witch_snpc", "simplenpc:witch"],
         WolfNPC::class => ["wolf_snpc", "simplenpc:wolf"],
         ZombieNPC::class => ["zombie_snpc", "simplenpc:zombie"],
-        LogoNPC::class => ["logo_snpc", "simplenpc:logo"]
+        LogoNPC::class => ["logo_snpc", "simplenpc:logo"],
+        BlockingDeadNPC::class => ["blocking_dead_snpc", "simplenpc:blocking_dead"]
     ];
 
     public function getDefaultNPCs(): array {
