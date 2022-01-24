@@ -21,7 +21,7 @@ class BlockingDeadNPC extends BaseNPC {
 
     protected function initEntity(CompoundTag $nbt): void {
         parent::initEntity($nbt);
-        $this->setScale(2.5);
+        $this->setScale(4.5);
     }
 
     protected function getInitialSizeInfo(): EntitySizeInfo {
