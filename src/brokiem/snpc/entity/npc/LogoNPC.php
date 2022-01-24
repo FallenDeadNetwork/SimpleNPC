@@ -12,11 +12,17 @@ namespace brokiem\snpc\entity\npc;
 use brokiem\snpc\entity\BaseNPC;
 use entity_factory\CustomEntityIds;
 use pocketmine\entity\EntitySizeInfo;
+use pocketmine\nbt\tag\CompoundTag;
 
 class LogoNPC extends BaseNPC {
 
     public float $height = 0.0;
     public float $width = 0.0;
+
+    protected function initEntity(CompoundTag $nbt): void {
+        parent::initEntity($nbt);
+        $this->setScale(5.0);
+    }
 
     protected function getInitialSizeInfo(): EntitySizeInfo {
         return new EntitySizeInfo($this->height, $this->width);
