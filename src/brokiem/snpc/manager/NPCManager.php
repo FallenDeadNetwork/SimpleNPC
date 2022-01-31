@@ -11,6 +11,8 @@ namespace brokiem\snpc\manager;
 
 use brokiem\snpc\entity\BaseNPC;
 use brokiem\snpc\entity\CustomHuman;
+use brokiem\snpc\entity\npc\AmmoBoxNPC;
+use brokiem\snpc\entity\npc\AttackHeliNPC;
 use brokiem\snpc\entity\npc\AxolotlNPC;
 use brokiem\snpc\entity\npc\BatNPC;
 use brokiem\snpc\entity\npc\BlazeNPC;
@@ -79,7 +81,9 @@ class NPCManager {
         WolfNPC::class => ["wolf_snpc", "simplenpc:wolf"],
         ZombieNPC::class => ["zombie_snpc", "simplenpc:zombie"],
         LogoNPC::class => ["logo_snpc", "simplenpc:logo"],
-        BlockingDeadNPC::class => ["blocking_dead_snpc", "simplenpc:blocking_dead"]
+        BlockingDeadNPC::class => ["blocking_dead_snpc", "simplenpc:blocking_dead"],
+        AttackHeliNPC::class => ["attack_heli_snpc", "simplenpc:attack_heli"],
+        AmmoBoxNPC::class => ["ammo_box_snpc", "simplenpc:ammo_box"]
     ];
 
     public function getDefaultNPCs(): array {
