@@ -24,6 +24,7 @@ use brokiem\snpc\entity\npc\EndermanNPC;
 use brokiem\snpc\entity\npc\GlowsquidNPC;
 use brokiem\snpc\entity\npc\GoatNPC;
 use brokiem\snpc\entity\npc\HorseNPC;
+use brokiem\snpc\entity\npc\JoinPortal;
 use brokiem\snpc\entity\npc\LogoNPC;
 use brokiem\snpc\entity\npc\OcelotNPC;
 use brokiem\snpc\entity\npc\PigNPC;
@@ -83,7 +84,8 @@ class NPCManager {
         LogoNPC::class => ["logo_snpc", "simplenpc:logo"],
         BlockingDeadNPC::class => ["blocking_dead_snpc", "simplenpc:blocking_dead"],
         AttackHeliNPC::class => ["attack_heli_snpc", "simplenpc:attack_heli"],
-        AmmoBoxNPC::class => ["ammo_box_snpc", "simplenpc:ammo_box"]
+        AmmoBoxNPC::class => ["ammo_box_snpc", "simplenpc:ammo_box"],
+        JoinPortal::class => ["join_portal_snpc", "simplenpc:join_portal"]
     ];
 
     public function getDefaultNPCs(): array {
