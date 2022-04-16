@@ -35,6 +35,7 @@ use brokiem\snpc\entity\npc\SkeletonNPC;
 use brokiem\snpc\entity\npc\SlimeNPC;
 use brokiem\snpc\entity\npc\SnowGolem;
 use brokiem\snpc\entity\npc\SpiderNPC;
+use brokiem\snpc\entity\npc\TgtKitNpc;
 use brokiem\snpc\entity\npc\VillagerNPC;
 use brokiem\snpc\entity\npc\WitchNPC;
 use brokiem\snpc\entity\npc\WolfNPC;
@@ -85,7 +86,8 @@ class NPCManager {
         BlockingDeadNPC::class => ["blocking_dead_snpc", "simplenpc:blocking_dead"],
         AttackHeliNPC::class => ["attack_heli_snpc", "simplenpc:attack_heli"],
         AmmoBoxNPC::class => ["ammo_box_snpc", "simplenpc:ammo_box"],
-        JoinPortal::class => ["join_portal_snpc", "simplenpc:join_portal"]
+        JoinPortal::class => ["join_portal_snpc", "simplenpc:join_portal"],
+        TgtKitNpc::class => ["tgtkitnpc_snpc", "simplenpc:tgtkitnpc"]
     ];
 
     public function getDefaultNPCs(): array {
