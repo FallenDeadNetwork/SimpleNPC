@@ -14,6 +14,6 @@ use pocketmine\network\mcpe\protocol\types\entity\EntityMetadataFlags;
 use pocketmine\network\mcpe\protocol\types\entity\EntityMetadataProperties;
 
 class MoveingXTgtKitNpc extends TgtKitNpc{
-	public float $moveX = 0.5;
-	public float $moveZ = 0.0;
+    public float $moveX = 0.5;
+    public float $moveZ = 0.0;
 }

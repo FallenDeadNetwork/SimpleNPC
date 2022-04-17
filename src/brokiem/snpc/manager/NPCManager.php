@@ -90,8 +90,8 @@ class NPCManager {
         AmmoBoxNPC::class => ["ammo_box_snpc", "simplenpc:ammo_box"],
         JoinPortal::class => ["join_portal_snpc", "simplenpc:join_portal"],
         TgtKitNpc::class => ["tgtkitnpc_snpc", "simplenpc:tgtkitnpc"],
-	    MoveingXTgtKitNpc::class => ["tgtkitnpcx_snpc", "simplenpc:tgtkitnpcx"],
-	    MoveingZTgtKitNpc::class => ["tgtkitnpcz_snpc", "simplenpc:tgtkitnpcz"],
+        MoveingXTgtKitNpc::class => ["tgtkitnpcx_snpc", "simplenpc:tgtkitnpcx"],
+        MoveingZTgtKitNpc::class => ["tgtkitnpcz_snpc", "simplenpc:tgtkitnpcz"],
     ];
 
     public function getDefaultNPCs(): array {
