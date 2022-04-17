@@ -26,6 +26,8 @@ use brokiem\snpc\entity\npc\GoatNPC;
 use brokiem\snpc\entity\npc\HorseNPC;
 use brokiem\snpc\entity\npc\JoinPortal;
 use brokiem\snpc\entity\npc\LogoNPC;
+use brokiem\snpc\entity\npc\MoveingXTgtKitNpc;
+use brokiem\snpc\entity\npc\MoveingZTgtKitNpc;
 use brokiem\snpc\entity\npc\OcelotNPC;
 use brokiem\snpc\entity\npc\PigNPC;
 use brokiem\snpc\entity\npc\PolarBearNPC;
@@ -87,7 +89,9 @@ class NPCManager {
         AttackHeliNPC::class => ["attack_heli_snpc", "simplenpc:attack_heli"],
         AmmoBoxNPC::class => ["ammo_box_snpc", "simplenpc:ammo_box"],
         JoinPortal::class => ["join_portal_snpc", "simplenpc:join_portal"],
-        TgtKitNpc::class => ["tgtkitnpc_snpc", "simplenpc:tgtkitnpc"]
+        TgtKitNpc::class => ["tgtkitnpc_snpc", "simplenpc:tgtkitnpc"],
+	    MoveingXTgtKitNpc::class => ["tgtkitnpcx_snpc", "simplenpc:tgtkitnpcx"],
+	    MoveingZTgtKitNpc::class => ["tgtkitnpcz_snpc", "simplenpc:tgtkitnpcz"],
     ];
 
     public function getDefaultNPCs(): array {

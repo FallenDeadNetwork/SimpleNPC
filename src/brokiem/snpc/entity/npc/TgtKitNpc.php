@@ -12,27 +12,38 @@ use pocketmine\nbt\tag\CompoundTag;
 use pocketmine\network\mcpe\protocol\types\entity\EntityMetadataCollection;
 use pocketmine\network\mcpe\protocol\types\entity\EntityMetadataFlags;
 use pocketmine\network\mcpe\protocol\types\entity\EntityMetadataProperties;
+use pocketmine\world\sound\AnvilBreakSound;
+use pocketmine\world\sound\AnvilFallSound;
 
 class TgtKitNpc extends BaseNPC{
     private const TYPE_ZERO = 0.0;
+
+	public float $moveX = 0.0;
+	public float $moveZ = 0.0;
 
     public float $height = 2;
     public float $width = 0.5;
 
     /** @var int[]|float[] */
-    protected array $sum = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+    protected array $sum = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
     protected int $counter = 0;
     protected ?float $beforesun = null;
     protected int $hasInfinity = 0;
 
-    public function __construct(Location $location, ?CompoundTag $nbt = null){
+	protected bool $can_add_sound = false;
+
+	protected int $con_cooltime = 0;
+	protected int $show_nametag_count = 0;
+
+
+	public function __construct(Location $location, ?CompoundTag $nbt = null){
         parent::__construct($location, $nbt);
         $this->setMaxHealth(200);
         $this->setHealth(200);
     }
 
     protected function entityBaseTick(int $tickDiff = 1) : bool{
-        if($this->counter >= 20){
+        if($this->counter >= 40){
             $this->counter = -1;
         }
         $this->sum[++$this->counter] = self::TYPE_ZERO;
@@ -42,21 +53,52 @@ class TgtKitNpc extends BaseNPC{
             $this->sendData(null);
             $this->beforesun = $sum;
         }
+		//$max = max($this->sum);
+		if($this->can_add_sound){
+			if($sum >= 20){
+				$this->broadcastSound(new AnvilFallSound());
+				$this->can_add_sound = false;
+			}
+		}else{
+			if($sum <= 20){
+				$this->can_add_sound = true;
+			}
+		}
+
+		--$this->show_nametag_count;
+	    --$this->con_cooltime;
+
+		$this->motion->x = $this->moveX;
+	    $this->motion->z = $this->moveZ;
+
+		if($this->isCollidedHorizontally&&$this->con_cooltime <= 0){
+			$this->moveX = -$this->moveX;
+			$this->moveZ = -$this->moveZ;
+			$this->con_cooltime = 60;
+		}
+
         return parent::entityBaseTick($tickDiff);
     }
 
     public function attack(EntityDamageEvent $source) : void{
         parent::attack($source);
+	    $this->show_nametag_count = 40;
         $this->sum[$this->counter] += $source->getBaseDamage();
     }
 
     protected function syncNetworkData(EntityMetadataCollection $properties) : void{
         parent::syncNetworkData($properties);
-        $properties->setByte(EntityMetadataProperties::ALWAYS_SHOW_NAMETAG, 1);
-        $properties->setGenericFlag(EntityMetadataFlags::CAN_SHOW_NAMETAG, true);
+		if($this->show_nametag_count >= 1){
+			$properties->setByte(EntityMetadataProperties::ALWAYS_SHOW_NAMETAG, 1);
+			$properties->setGenericFlag(EntityMetadataFlags::CAN_SHOW_NAMETAG, true);
+		}else{
+			$properties->setByte(EntityMetadataProperties::ALWAYS_SHOW_NAMETAG, 0);
+			$properties->setGenericFlag(EntityMetadataFlags::CAN_SHOW_NAMETAG, false);
+		}
     }
 
     public function kill() : void{
+	    $this->show_nametag_count = 40;
         $this->hasInfinity = 20;
         $this->setNameTag("infinity");
         $this->sendData(null);
