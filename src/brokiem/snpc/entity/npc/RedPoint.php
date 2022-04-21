@@ -13,6 +13,8 @@ use brokiem\snpc\entity\BaseNPC;
 use entity_factory\CustomEntityIds;
 use pocketmine\entity\EntitySizeInfo;
 use pocketmine\nbt\tag\CompoundTag;
+use pocketmine\network\mcpe\protocol\types\entity\EntityMetadataCollection;
+use pocketmine\network\mcpe\protocol\types\entity\EntityMetadataFlags;
 
 class RedPoint extends BaseNPC {
 
@@ -24,7 +26,12 @@ class RedPoint extends BaseNPC {
         $this->setScale(2.0);
     }
 
-    protected function getInitialSizeInfo(): EntitySizeInfo {
+	protected function syncNetworkData(EntityMetadataCollection $properties) : void{
+		parent::syncNetworkData($properties);
+		$properties->setGenericFlag(EntityMetadataFlags::POWERED, true);
+	}
+
+	protected function getInitialSizeInfo(): EntitySizeInfo {
         return new EntitySizeInfo($this->height, $this->width);
     }
 
