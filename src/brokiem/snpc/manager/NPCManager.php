@@ -17,6 +17,7 @@ use brokiem\snpc\entity\npc\AxolotlNPC;
 use brokiem\snpc\entity\npc\BatNPC;
 use brokiem\snpc\entity\npc\BlazeNPC;
 use brokiem\snpc\entity\npc\BlockingDeadNPC;
+use brokiem\snpc\entity\npc\BluePoint;
 use brokiem\snpc\entity\npc\ChickenNPC;
 use brokiem\snpc\entity\npc\CowNPC;
 use brokiem\snpc\entity\npc\CreeperNPC;
@@ -28,9 +29,11 @@ use brokiem\snpc\entity\npc\JoinPortal;
 use brokiem\snpc\entity\npc\LogoNPC;
 use brokiem\snpc\entity\npc\MoveingXTgtKitNpc;
 use brokiem\snpc\entity\npc\MoveingZTgtKitNpc;
+use brokiem\snpc\entity\npc\NonePoint;
 use brokiem\snpc\entity\npc\OcelotNPC;
 use brokiem\snpc\entity\npc\PigNPC;
 use brokiem\snpc\entity\npc\PolarBearNPC;
+use brokiem\snpc\entity\npc\RedPoint;
 use brokiem\snpc\entity\npc\SheepNPC;
 use brokiem\snpc\entity\npc\ShulkerNPC;
 use brokiem\snpc\entity\npc\SkeletonNPC;
@@ -92,6 +95,9 @@ class NPCManager {
         TgtKitNpc::class => ["tgtkitnpc_snpc", "simplenpc:tgtkitnpc"],
         MoveingXTgtKitNpc::class => ["tgtkitnpcx_snpc", "simplenpc:tgtkitnpcx"],
         MoveingZTgtKitNpc::class => ["tgtkitnpcz_snpc", "simplenpc:tgtkitnpcz"],
+	    NonePoint::class => ["nonepoint_snpc", "nonepoint:tgtkitnpcz"],
+	    RedPoint::class => ["redpoint_snpc", "redpoint:tgtkitnpcz"],
+	    BluePoint::class => ["bluepoint_snpc", "bluepoint:tgtkitnpcz"],
     ];
 
     public function getDefaultNPCs(): array {
