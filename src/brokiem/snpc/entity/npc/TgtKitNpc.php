@@ -62,7 +62,7 @@ class TgtKitNpc extends BaseNPC{
                 $this->can_add_sound = false;
             }
         }else{
-            if($sum <= 20){
+            if($sum < 20){
                 $this->can_add_sound = true;
             }
         }
