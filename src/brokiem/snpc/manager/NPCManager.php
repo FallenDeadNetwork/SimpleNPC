@@ -19,6 +19,7 @@ use brokiem\snpc\entity\npc\BlazeNPC;
 use brokiem\snpc\entity\npc\BlockingDeadNPC;
 use brokiem\snpc\entity\npc\BluePoint;
 use brokiem\snpc\entity\npc\ChickenNPC;
+use brokiem\snpc\entity\npc\ConqPortalNPC;
 use brokiem\snpc\entity\npc\CowNPC;
 use brokiem\snpc\entity\npc\CreeperNPC;
 use brokiem\snpc\entity\npc\EndermanNPC;
@@ -98,6 +99,7 @@ class NPCManager {
 	    NonePoint::class => ["nonepoint_snpc", "nonepoint:tgtkitnpcz"],
 	    RedPoint::class => ["redpoint_snpc", "redpoint:tgtkitnpcz"],
 	    BluePoint::class => ["bluepoint_snpc", "bluepoint:tgtkitnpcz"],
+        ConqPortalNPC::class => ["conq_portal_snpc", "simplenpc:conq_portal"]
     ];
 
     public function getDefaultNPCs(): array {
