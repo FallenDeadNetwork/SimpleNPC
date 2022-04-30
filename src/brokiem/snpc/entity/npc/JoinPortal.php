@@ -23,7 +23,7 @@ class JoinPortal extends BaseNPC {
 
     protected function initEntity(CompoundTag $nbt): void {
         parent::initEntity($nbt);
-        $this->setScale(1);
+        $this->setScale(1.8);
     }
 
     protected function getInitialSizeInfo(): EntitySizeInfo {
