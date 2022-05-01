@@ -10,6 +10,7 @@ declare(strict_types=1);
 namespace brokiem\snpc\entity\npc;
 
 use brokiem\snpc\entity\BaseNPC;
+use conquest\form\JoinForm;
 use entity_factory\CustomEntityIds;
 use fallendead\form\game\JoinFormV2;
 use fallendead\form\game\SelectMapForm;
@@ -22,7 +23,7 @@ use pocketmine\player\Player;
 
 class BlockingDeadNPC extends BaseNPC {
     public float $height = 2.5;
-    public float $width = 2.5;
+    public float $width = 0.5;
 
 	public int $tick_counter = 0;
 
@@ -47,6 +48,6 @@ class BlockingDeadNPC extends BaseNPC {
 	}
 
 	private function onJoin(Player $player) : void{
-		$player->sendForm(new JoinFormV2());
+		$player->sendForm(new JoinForm());
 	}
 }

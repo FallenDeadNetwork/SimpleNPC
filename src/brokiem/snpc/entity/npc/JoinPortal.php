@@ -13,6 +13,7 @@ use brokiem\snpc\entity\BaseNPC;
 use conquest\form\JoinForm;
 use conquest\object\utils\GameFactory;
 use entity_factory\CustomEntityIds;
+use fallendead\form\game\JoinFormV2;
 use fallendead\level\map;
 use pocketmine\entity\EntitySizeInfo;
 use pocketmine\event\entity\EntityDamageByEntityEvent;
@@ -23,7 +24,7 @@ use pocketmine\Server;
 
 class JoinPortal extends BaseNPC {
     public float $height = 2.5;
-    public float $width = 2.5;
+    public float $width = 0.5;
 
 	protected int $tick_counter = 0;
 
@@ -44,8 +45,7 @@ class JoinPortal extends BaseNPC {
     }
 
 	private function onJoin(Player $player) : void{
-		$player->sendForm(new JoinForm());
-
+		$player->sendForm(new JoinFormV2());
 	}
 
     public static function getNetworkTypeId(): string {
