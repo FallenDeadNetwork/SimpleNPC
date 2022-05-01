@@ -19,6 +19,7 @@ use pocketmine\event\entity\EntityDamageEvent;
 use pocketmine\nbt\tag\CompoundTag;
 use pocketmine\player\Player;
 use pocketmine\Server;
+use conquest\form\JoinForm;
 
 class JoinPortal extends BaseNPC {
     public float $height = 0.0;
@@ -61,13 +62,8 @@ class JoinPortal extends BaseNPC {
 	}
 
 	private function onJoin(Player $player) : void{
-		$game = GameFactory::getGame();
-		if($game === null){
-			$player->sendMessage('§c参加可能なゲームを取得できませんでした');
-			return;
-		}
-		$game->join($player);
-		$player->sendMessage('§aゲームに参加しました');
+		$player->sendForm(new JoinForm());
+
 	}
 
     public static function getNetworkTypeId(): string {
