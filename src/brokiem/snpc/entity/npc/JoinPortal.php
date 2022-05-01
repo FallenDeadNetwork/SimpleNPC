@@ -22,8 +22,8 @@ use pocketmine\Server;
 use conquest\form\JoinForm;
 
 class JoinPortal extends BaseNPC {
-    public float $height = 3.0;
-    public float $width = 3.0;
+    public float $height = 5.0;
+    public float $width = 5.0;
 
 	protected int $tick_counter = 0;
 
