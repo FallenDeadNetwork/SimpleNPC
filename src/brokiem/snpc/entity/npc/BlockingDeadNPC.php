@@ -11,6 +11,7 @@ namespace brokiem\snpc\entity\npc;
 
 use brokiem\snpc\entity\BaseNPC;
 use entity_factory\CustomEntityIds;
+use fallendead\form\game\JoinFormV2;
 use fallendead\form\game\SelectMapForm;
 use fallendead\level\map;
 use pocketmine\entity\EntitySizeInfo;
@@ -27,7 +28,7 @@ class BlockingDeadNPC extends BaseNPC {
 
     protected function initEntity(CompoundTag $nbt): void {
         parent::initEntity($nbt);
-        $this->setScale(4.7);
+        $this->setScale(6.7);
     }
 
     protected function getInitialSizeInfo(): EntitySizeInfo {
@@ -46,6 +47,6 @@ class BlockingDeadNPC extends BaseNPC {
 	}
 
 	private function onJoin(Player $player) : void{
-		map::JoinGame($player);
+		$player->sendForm(new JoinFormV2());
 	}
 }
