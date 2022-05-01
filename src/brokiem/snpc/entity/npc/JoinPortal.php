@@ -10,6 +10,7 @@ declare(strict_types=1);
 namespace brokiem\snpc\entity\npc;
 
 use brokiem\snpc\entity\BaseNPC;
+use conquest\form\JoinForm;
 use conquest\object\utils\GameFactory;
 use entity_factory\CustomEntityIds;
 use fallendead\level\map;
@@ -19,11 +20,10 @@ use pocketmine\event\entity\EntityDamageEvent;
 use pocketmine\nbt\tag\CompoundTag;
 use pocketmine\player\Player;
 use pocketmine\Server;
-use conquest\form\JoinForm;
 
 class JoinPortal extends BaseNPC {
-    public float $height = 5.0;
-    public float $width = 5.0;
+    public float $height = 2.5;
+    public float $width = 2.5;
 
 	protected int $tick_counter = 0;
 

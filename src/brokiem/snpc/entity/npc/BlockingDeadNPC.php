@@ -21,8 +21,8 @@ use pocketmine\nbt\tag\CompoundTag;
 use pocketmine\player\Player;
 
 class BlockingDeadNPC extends BaseNPC {
-    public float $height = 5.0;
-    public float $width = 5.0;
+    public float $height = 2.5;
+    public float $width = 2.5;
 
 	public int $tick_counter = 0;
 
