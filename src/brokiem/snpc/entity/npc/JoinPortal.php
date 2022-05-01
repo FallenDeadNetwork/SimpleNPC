@@ -10,16 +10,22 @@ declare(strict_types=1);
 namespace brokiem\snpc\entity\npc;
 
 use brokiem\snpc\entity\BaseNPC;
+use conquest\object\utils\GameFactory;
 use entity_factory\CustomEntityIds;
+use fallendead\level\map;
 use pocketmine\entity\EntitySizeInfo;
 use pocketmine\event\entity\EntityDamageByEntityEvent;
 use pocketmine\event\entity\EntityDamageEvent;
 use pocketmine\nbt\tag\CompoundTag;
+use pocketmine\player\Player;
 use pocketmine\Server;
+use conquest\form\JoinForm;
 
 class JoinPortal extends BaseNPC {
-    public float $height = 0.0;
-    public float $width = 0.0;
+    public float $height = 5.0;
+    public float $width = 5.0;
+
+	protected int $tick_counter = 0;
 
     protected function initEntity(CompoundTag $nbt): void {
         parent::initEntity($nbt);
@@ -33,10 +39,14 @@ class JoinPortal extends BaseNPC {
     public function attack(EntityDamageEvent $source) : void{
         parent::attack($source);
         if($source instanceof EntityDamageByEntityEvent){
-            Server::getInstance()->dispatchCommand($source->getDamager(), "/conq play");
-            //Server::getInstance()->dispatchCommand($source->getDamager(), "/game");
+            $this->onJoin($source->getDamager());
         }
     }
+
+	private function onJoin(Player $player) : void{
+		$player->sendForm(new JoinForm());
+
+	}
 
     public static function getNetworkTypeId(): string {
         return CustomEntityIds::JOINPORTAL()->getId();

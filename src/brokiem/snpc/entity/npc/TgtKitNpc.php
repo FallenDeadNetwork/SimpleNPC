@@ -7,11 +7,13 @@ use brokiem\snpc\entity\BaseNPC;
 use entity_factory\CustomEntityIds;
 use pocketmine\entity\EntitySizeInfo;
 use pocketmine\entity\Location;
+use pocketmine\event\entity\EntityDamageByEntityEvent;
 use pocketmine\event\entity\EntityDamageEvent;
 use pocketmine\nbt\tag\CompoundTag;
 use pocketmine\network\mcpe\protocol\types\entity\EntityMetadataCollection;
 use pocketmine\network\mcpe\protocol\types\entity\EntityMetadataFlags;
 use pocketmine\network\mcpe\protocol\types\entity\EntityMetadataProperties;
+use pocketmine\player\Player;
 use pocketmine\world\sound\AnvilBreakSound;
 use pocketmine\world\sound\AnvilFallSound;
 
@@ -60,7 +62,7 @@ class TgtKitNpc extends BaseNPC{
                 $this->can_add_sound = false;
             }
         }else{
-            if($sum <= 20){
+            if($sum < 20){
                 $this->can_add_sound = true;
             }
         }
@@ -83,7 +85,21 @@ class TgtKitNpc extends BaseNPC{
     public function attack(EntityDamageEvent $source) : void{
         parent::attack($source);
         $this->show_nametag_count = 40;
-        $this->sum[$this->counter] += $source->getBaseDamage();
+        $this->sum[$this->counter] += $source->getFinalDamage();
+        $sum = array_sum($this->sum);
+
+        if(!$source instanceof EntityDamageByEntityEvent) return;
+        $damager = $source->getDamager();
+
+        if(!$damager instanceof Player) return;
+        $this->sendActionBarMessage($damager, $this->getPosition()->distance($damager->getPosition()), $source->getFinalDamage());
+
+        if($this->can_add_sound){
+            if($sum >= 20){
+                $this->getWorld()->addSound($source->getDamager()->getPosition(), new AnvilFallSound);
+                $this->can_add_sound = false;
+            }
+        }
     }
 
     protected function syncNetworkData(EntityMetadataCollection $properties) : void{
@@ -115,5 +131,12 @@ class TgtKitNpc extends BaseNPC{
 
     public static function getNetworkTypeId() : string{
         return CustomEntityIds::TGT()->getId();
+    }
+
+    public function sendActionBarMessage(Player $player, float $distance, float $damage):void{
+        $player->sendActionBarMessage(
+            'ダメージ: '.round($damage).
+            '距離: '.round($distance)
+        );
     }
 }
