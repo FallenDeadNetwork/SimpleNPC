@@ -22,8 +22,8 @@ use pocketmine\Server;
 use conquest\form\JoinForm;
 
 class JoinPortal extends BaseNPC {
-    public float $height = 0.0;
-    public float $width = 0.0;
+    public float $height = 3.0;
+    public float $width = 3.0;
 
 	protected int $tick_counter = 0;
 
@@ -39,27 +39,9 @@ class JoinPortal extends BaseNPC {
     public function attack(EntityDamageEvent $source) : void{
         parent::attack($source);
         if($source instanceof EntityDamageByEntityEvent){
-            Server::getInstance()->dispatchCommand($source->getDamager(), "/conq play");
-            //Server::getInstance()->dispatchCommand($source->getDamager(), "/game");
+            $this->onJoin($source->getDamager());
         }
     }
-
-	public function entityBaseTick(int $tickDiff = 1) : bool{
-		if(!$this->isAlive()||$this->isClosed()){
-			return parent::entityBaseTick($tickDiff);
-		}
-		parent::entityBaseTick($tickDiff);
-		++$this->tick_counter;
-		if($this->tick_counter >= 10){
-			foreach($this->getWorld()->getPlayers() as $player){
-				if($player->getPosition()->distance($this->location) <= 9){// 3 ** 2
-					$this->onJoin($player);
-				}
-			}
-			$this->tick_counter = 0;
-		}
-		return true;
-	}
 
 	private function onJoin(Player $player) : void{
 		$player->sendForm(new JoinForm());

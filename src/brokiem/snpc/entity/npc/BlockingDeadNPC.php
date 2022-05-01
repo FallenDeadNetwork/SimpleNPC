@@ -14,11 +14,12 @@ use entity_factory\CustomEntityIds;
 use fallendead\form\game\SelectMapForm;
 use fallendead\level\map;
 use pocketmine\entity\EntitySizeInfo;
+use pocketmine\event\entity\EntityDamageByEntityEvent;
+use pocketmine\event\entity\EntityDamageEvent;
 use pocketmine\nbt\tag\CompoundTag;
 use pocketmine\player\Player;
 
 class BlockingDeadNPC extends BaseNPC {
-
     public float $height = 0.0;
     public float $width = 0.0;
 
@@ -37,21 +38,11 @@ class BlockingDeadNPC extends BaseNPC {
         return CustomEntityIds::BLOCKING_DEAD()->getId();
     }
 
-	public function entityBaseTick(int $tickDiff = 1) : bool{
-		if(!$this->isAlive()||$this->isClosed()){
-			return parent::entityBaseTick($tickDiff);
+	public function attack(EntityDamageEvent $source) : void{
+		parent::attack($source);
+		if($source instanceof EntityDamageByEntityEvent){
+			$this->onJoin($source->getDamager());
 		}
-		parent::entityBaseTick($tickDiff);
-		++$this->tick_counter;
-		if($this->tick_counter >= 10){
-			foreach($this->getWorld()->getPlayers() as $player){
-				if($player->getPosition()->distance($this->location) <= 9){// 3 ** 2
-					$this->onJoin($player);
-				}
-			}
-			$this->tick_counter = 0;
-		}
-		return true;
 	}
 
 	private function onJoin(Player $player) : void{
