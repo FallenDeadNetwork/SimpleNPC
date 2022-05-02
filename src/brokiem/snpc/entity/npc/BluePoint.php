@@ -18,8 +18,8 @@ use pocketmine\network\mcpe\protocol\types\entity\EntityMetadataFlags;
 
 class BluePoint extends BaseNPC {
 
-    public float $height = 0.0;
-    public float $width = 0.0;
+    public float $height = 90.0;
+    public float $width = 0.1;
 
     protected function initEntity(CompoundTag $nbt): void {
         parent::initEntity($nbt);
