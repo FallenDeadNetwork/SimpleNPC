@@ -11,22 +11,20 @@ namespace brokiem\snpc\entity\npc;
 
 use brokiem\snpc\entity\BaseNPC;
 use entity_factory\CustomEntityIds;
-use fdguns\event\EntityDamageByGunEvent;
 use pocketmine\entity\EntitySizeInfo;
 use pocketmine\event\entity\EntityDamageByEntityEvent;
 use pocketmine\event\entity\EntityDamageEvent;
 use pocketmine\nbt\tag\CompoundTag;
 use pocketmine\player\Player;
 use conquest\form\JoinForm;
-use pocketmine\Server;
 
 class ConqPortalNPC extends BaseNPC{
-	public float $height = 2.5;
-	public float $width = 0.5;
+	public float $height = 2.0;
+	public float $width = 1.5;
 
 	protected function initEntity(CompoundTag $nbt) : void{
 		parent::initEntity($nbt);
-		$this->setScale(6.7);
+		$this->setScale(2.0);
 	}
 
 	protected function getInitialSizeInfo() : EntitySizeInfo{
