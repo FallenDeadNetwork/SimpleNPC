@@ -46,7 +46,7 @@ class JoinPortal extends BaseNPC {
     }
 
 	private function onJoin(Player $player) : void{
-		$player->sendForm(new SelectMapForm($player->getLocale());
+		$player->sendForm(new SelectMapForm($player->getLocale()));
 	}
 
     public static function getNetworkTypeId(): string {
