@@ -41,7 +41,7 @@ class BlockingDeadNPC extends BaseNPC {
 
 	public function attack(EntityDamageEvent $source) : void{
 		parent::attack($source);
-		if($source instanceof EntityDamageByEntityEvent){
+		if($source instanceof EntityDamageByEntityEvent&&$source->getCause() === EntityDamageEvent::CAUSE_ENTITY_ATTACK){
 			$this->onJoin($source->getDamager());
 		}
 	}
