@@ -48,6 +48,6 @@ class BlockingDeadNPC extends BaseNPC {
 	}
 
 	private function onJoin(Player $player) : void{
-		$player->sendForm(new JoinFormV2());
+		$player->sendForm(new JoinFormV2($player->getLocale()));
 	}
 }
